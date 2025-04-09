@@ -8,3 +8,5 @@ export const posts = pgTable('posts', {
   createdAt: timestamp('time', { mode: 'date' }).notNull().defaultNow(), // Time at which the post was created
   framework: varchar('framework', { length: 7 }).notNull().$type<framework>(), // Framework from which the post was made
 });
+
+export type TPost = typeof posts.$inferSelect;
