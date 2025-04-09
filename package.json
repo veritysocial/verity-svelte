@@ -44,7 +44,9 @@
     "vite": "^6.2.5"
   },
   "dependencies": {
+    "@clerk/themes": "^2.2.30",
     "@neondatabase/serverless": "^0.10.4",
-    "drizzle-orm": "^0.40.0"
+    "drizzle-orm": "^0.40.0",
+    "svelte-clerk": "^0.11.0"
   }
 }

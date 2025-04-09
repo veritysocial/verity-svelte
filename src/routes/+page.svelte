@@ -8,6 +8,7 @@
   <form>
     <Card.Header>
       <Card.Title>Create Post</Card.Title>
+      <Card.Description>Posting from Verity <span class="font-bold text-[#FF3E00]">Svelte</span></Card.Description>
     </Card.Header>
     <Card.Content>
       <Textarea name="content" id="content" placeholder="Share your thoughts with the world!" />
