@@ -10,3 +10,8 @@ export const posts = pgTable('posts', {
 });
 
 export type TPost = typeof posts.$inferSelect;
+
+export type TPostClient = Omit<TPost, 'user'> & {
+  username: string;
+  image: string;
+};

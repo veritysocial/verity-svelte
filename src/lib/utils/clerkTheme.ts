@@ -6,7 +6,6 @@ function isDarkMode(): boolean {
 }
 
 export function useClerkAppearance() {
-  console.log(isDarkMode());
   if (isDarkMode())
     return {
       baseTheme: [dark],

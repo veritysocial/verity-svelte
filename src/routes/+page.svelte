@@ -4,11 +4,10 @@
   import { Button } from '$lib/components/ui/button/index.js';
   import { SignedIn } from 'svelte-clerk';
   import { enhance } from '$app/forms';
+  import Post from '$lib/components/post.svelte';
 
   import type { PageServerData } from './$types';
   const { data }: { data: PageServerData } = $props();
-
-  console.log(data.storedPosts);
 </script>
 
 <SignedIn>
@@ -29,3 +28,7 @@
     </form>
   </Card.Root>
 </SignedIn>
+
+{#each data.storedPosts as post}
+  <Post {post} />
+{/each}
