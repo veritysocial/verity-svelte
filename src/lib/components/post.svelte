@@ -18,7 +18,8 @@
     <Card.Title class="flex items-center justify-start gap-2 font-normal">
       <img class="h-5 rounded-full" src={post.image} alt="verity user @{post.username}'s profile photo" />
       <div>
-        <span class="font-bold">@{post.username}</span> on Verity
+        <span class="font-bold">@{post.username}</span>
+        <span class="text-muted-foreground">on Verity</span>
         <span class="font-bold {frameWorkColors[post.framework]}"
           >{post.framework.charAt(0).toUpperCase() + post.framework.slice(1)}</span
         >
@@ -28,7 +29,7 @@
   <Card.Content class="text-xl">
     {post.content}
   </Card.Content>
-  <Card.Footer class="text-foreground/50 text-sm font-light">
+  <Card.Footer class="text-muted-foreground text-sm font-light">
     {post.createdAt.toLocaleDateString(undefined, {
       month: 'long',
       day: 'numeric',
