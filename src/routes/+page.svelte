@@ -4,7 +4,7 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 </script>
 
-<Card.Root class="mx-auto mt-8 w-11/12 md:w-1/2">
+<Card.Root class="border-primary mx-auto mt-8 w-11/12 md:w-1/2">
 	<form>
 		<Card.Header>
 			<Card.Title>Create Post</Card.Title>
