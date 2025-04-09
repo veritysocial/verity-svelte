@@ -16,7 +16,17 @@
       </SignUpButton>
     </SignedOut>
     <SignedIn>
-      <UserButton appearance={useClerkAppearance()} />
+      <UserButton
+        appearance={{
+          ...useClerkAppearance(),
+          elements: {
+            userButtonAvatarBox: {
+              height: '48px',
+              width: '48px',
+            },
+          },
+        }}
+      />
     </SignedIn>
   </nav>
   <div>
