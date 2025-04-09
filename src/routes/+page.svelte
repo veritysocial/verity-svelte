@@ -29,6 +29,8 @@
   </Card.Root>
 </SignedIn>
 
-{#each data.storedPosts as post}
-  <Post {post} />
-{/each}
+<div class="mt-8 flex flex-col gap-4">
+  {#each data.storedPosts as post}
+    <Post {post} />
+  {/each}
+</div>

@@ -13,7 +13,7 @@
   };
 </script>
 
-<Card.Root class="border-primary mx-auto mt-8 w-11/12 rounded-lg md:w-1/2">
+<Card.Root class="border-primary mx-auto w-11/12 rounded-lg md:w-1/2">
   <Card.Header>
     <Card.Title class="flex items-center justify-start gap-2 font-normal">
       <img class="h-5 rounded-full" src={post.image} alt="verity user @{post.username}'s profile photo" />
