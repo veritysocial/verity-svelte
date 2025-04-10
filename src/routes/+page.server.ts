@@ -35,6 +35,7 @@ export const actions = {
     // Grab the post content
     const formData = await request.formData();
     const content = formData.get('content') as string;
+    const connection_id = formData.get('connection_id') as string;
 
     // Save the post in the DB
     const id = v4();
@@ -57,6 +58,7 @@ export const actions = {
       id,
       username: userData.username!,
       image: userData.imageUrl,
+      connection_id,
     });
 
     return { success: true, id };

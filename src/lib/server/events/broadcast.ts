@@ -2,7 +2,7 @@
 import { emitters } from './clients';
 import type { TPostClient } from '../db/schema';
 
-export function broadcast(eventName: string, data: TPostClient) {
+export function broadcast(eventName: string, data: TPostClient & { connection_id: string }) {
   for (const emit of emitters) {
     const { error } = emit(eventName, JSON.stringify(data));
     if (error) {
