@@ -1,13 +1,40 @@
 <script lang="ts">
-  import * as Card from '$lib/components/ui/card/index.js';
-  import { Textarea } from '$lib/components/ui/textarea/index.js';
-  import { Button } from '$lib/components/ui/button/index.js';
-  import { SignedIn } from 'svelte-clerk';
   import { enhance } from '$app/forms';
   import Post from '$lib/components/post.svelte';
-
+  import { Button } from '$lib/components/ui/button/index.js';
+  import * as Card from '$lib/components/ui/card/index.js';
+  import { Textarea } from '$lib/components/ui/textarea/index.js';
+  import type { TPost, TPostClient } from '$lib/server/db/schema';
+  import { SignedIn } from 'svelte-clerk';
+  import { source } from 'sveltekit-sse';
   import type { PageServerData } from './$types';
+  import { useClerkContext } from 'svelte-clerk';
+
+  const ctx = useClerkContext();
   const { data }: { data: PageServerData } = $props();
+  const value = source('/api/events').select('post');
+  let messages: TPostClient[] = $state([]);
+
+  value.subscribe((v) => {
+    if (v.length !== 0) {
+      const parsed = JSON.parse(v);
+      console.log(ctx.user?.username, parsed.username);
+      if (parsed.username !== ctx.user?.username) {
+        // Append to messages without .push
+        messages = [
+          {
+            id: parsed.id,
+            content: parsed.content,
+            createdAt: new Date(parsed.createdAt),
+            framework: parsed.framework,
+            username: parsed.username,
+            image: parsed.image,
+          },
+          ...messages,
+        ];
+      }
+    }
+  });
 </script>
 
 <SignedIn>
@@ -30,6 +57,9 @@
 </SignedIn>
 
 <div class="mt-8 flex flex-col gap-4">
+  {#each messages as post}
+    <Post {post} />
+  {/each}
   {#each data.storedPosts as post}
     <Post {post} />
   {/each}
