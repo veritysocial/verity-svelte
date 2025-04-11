@@ -5,6 +5,7 @@ import { desc } from 'drizzle-orm';
 import { clerkClient } from 'svelte-clerk/server';
 import { v4 } from 'uuid';
 import type { Actions, PageServerLoad } from './$types';
+import { broadcast } from '$lib/server/events/broadcast';
 
 export const load: PageServerLoad = async (): Promise<{ storedPosts: TPostClient[] }> => {
   const dbPosts = await db.select().from(posts).orderBy(desc(posts.createdAt));
@@ -34,15 +35,30 @@ export const actions = {
     // Grab the post content
     const formData = await request.formData();
     const content = formData.get('content') as string;
+    const connection_id = formData.get('connection_id') as string;
 
     // Save the post in the DB
     const id = v4();
+    const now = new Date();
     await db.insert(posts).values({
       content,
-      createdAt: new Date(),
+      createdAt: now,
       framework: 'svelte',
       id,
       user: userId,
+    });
+
+    // Send the post data to the rest of the clients
+    const userData = await clerkClient.users.getUser(userId);
+
+    broadcast('post', {
+      content,
+      createdAt: now,
+      framework: 'svelte',
+      id,
+      username: userData.username!,
+      image: userData.imageUrl,
+      connection_id,
     });
 
     return { success: true, id };
