@@ -12,7 +12,6 @@
   import { v4 } from 'uuid';
 
   const connection_id = v4();
-  const ctx = useClerkContext();
   const { data }: { data: PageServerData } = $props();
   const value = source('/api/events').select('post');
   let messages: TPostClient[] = $state([]);
@@ -34,19 +33,17 @@
   value.subscribe((v) => {
     if (v.length !== 0) {
       const parsed = JSON.parse(v);
-      if (parsed.username !== connection_id) {
-        messages = [
-          {
-            id: parsed.id,
-            content: parsed.content,
-            createdAt: new Date(parsed.createdAt),
-            framework: parsed.framework,
-            username: parsed.username,
-            image: parsed.image,
-          },
-          ...messages,
-        ];
-      }
+      messages = [
+        {
+          id: parsed.id,
+          content: parsed.content,
+          createdAt: new Date(parsed.createdAt),
+          framework: parsed.framework,
+          username: parsed.username,
+          image: parsed.image,
+        },
+        ...messages,
+      ];
     }
   });
 </script>
