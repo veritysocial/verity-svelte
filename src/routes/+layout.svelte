@@ -11,7 +11,7 @@
 
 <ClerkProvider appearance={useClerkAppearance()}>
   <div class="text-foreground absolute top-4 right-4 flex flex-col items-end">
-    <Logo />
+    <a href="/"><Logo /></a>
     <p class="w-fit">
       by <a
         href="https://www.arithefirst.com/"

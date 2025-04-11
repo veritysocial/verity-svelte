@@ -18,7 +18,7 @@
     <Card.Title class="flex items-center justify-start gap-2 font-normal">
       <img class="h-5 rounded-full" src={post.image} alt="verity user @{post.username}'s profile photo" />
       <div>
-        <span class="font-bold">@{post.username}</span>
+        <a href="/user/{post.username}" class="font-bold">@{post.username}</a>
         <span class="text-muted-foreground">on Verity</span>
         <span class="font-bold {frameWorkColors[post.framework]}"
           >{post.framework.charAt(0).toUpperCase() + post.framework.slice(1)}</span
