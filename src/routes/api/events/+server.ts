@@ -40,3 +40,10 @@ export function POST() {
     });
   });
 }
+
+async function shutdown() {
+  await client.end();
+}
+
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
