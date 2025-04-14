@@ -48,6 +48,14 @@
   });
 </script>
 
+<svelte:head>
+  <title>Verity (Svelte Edition)</title>
+  <meta
+    name="description"
+    content="Verify (Vertical + Community) is a project built by April Hall to try out a bunch of different javascript frameworks by making the same app in 5 of them"
+  />
+</svelte:head>
+
 <SignedIn>
   <Card.Root class="border-primary mx-auto mt-8 w-11/12 rounded-lg md:w-1/2">
     <form method="POST" use:enhance={injectConnectionId}>

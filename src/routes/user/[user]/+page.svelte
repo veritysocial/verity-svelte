@@ -5,6 +5,14 @@
   console.log(data.posts);
 </script>
 
+<svelte:head>
+  <title>Verity (Svelte Edition) | @{data.user.username}</title>
+  <meta
+    name="description"
+    content="Verify (Vertical + Community) is a project built by April Hall to try out a bunch of different javascript frameworks by making the same app in 5 of them"
+  />
+</svelte:head>
+
 <div class="mt-8 flex w-full flex-col items-center justify-center">
   <img
     class="h-36 w-36 rounded-full"
