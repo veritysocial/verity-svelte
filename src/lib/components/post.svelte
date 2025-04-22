@@ -8,7 +8,6 @@
     svelte: 'text-[#FF3E00]',
     react: 'text-[#66DBFB]',
     solid: 'text-[#315A99]',
-    angular: 'text-[#AF2B2D]',
     vue: 'text-[#3FB27F]',
   };
 </script>
